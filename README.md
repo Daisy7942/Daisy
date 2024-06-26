@@ -7,3 +7,5 @@
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=30&pause=1000&random=false&width=435&lines=This+is+best+site+for+development.)](https://git.io/typing-svg)
 
 ![Static Badge](https://img.shields.io/badge/:badgeContent)
+
+[![Daisy's GitHub stats](https://github-readme-stats.vercel.app/api?username=Daisy7942)](https://github.com/Daisy7942/github-readme-stats)
