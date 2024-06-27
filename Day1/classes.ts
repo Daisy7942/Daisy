@@ -15,7 +15,9 @@
 
 // // private : 접근제한
 // // readonly : 읽기만 가능
-
+interface Speaker {
+  message: string;
+}
 class Speaker {
   private message: string;
 
