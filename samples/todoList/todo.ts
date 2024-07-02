@@ -1,0 +1,152 @@
+type Todo = {
+  id: number;
+  title: string;
+  done: boolean;
+};
+
+let todoItems: Todo[];
+
+//api
+function fetchTodoItems(): Todo[] {
+  const todos = [
+    { id: 1, title: "안녕", done: false },
+    { id: 2, title: "타입", done: false },
+    { id: 3, title: "스크립트", done: false },
+  ];
+  return todos;
+}
+
+//CRUD
+//create
+function addTodo(todo: Todo) {
+  todoItems.push(todo);
+}
+
+//read
+function fetchTodos() {
+  const todos = fetchTodoItems();
+  return todos;
+}
+
+//delete
+function deleteTodo(index: number) {
+  todoItems.splice(index, 1);
+}
+
+//update
+function completeTodo(index: number, todo: Todo) {
+  todo.done = true;
+  todoItems.splice(index, 1, todo);
+}
+
+//business logic
+//business logic
+
+function logFirstTodo(): Todo {
+  return todoItems[0];
+}
+
+function showCompleted(): Todo[] {
+  return todoItems.filter((item) => {
+    return item.done;
+  });
+}
+
+function log(): void {
+  console.log(todoItems);
+}
+
+function addTwoTodoItems(): void {
+  const item1 = {
+    id: 4,
+    title: "아이템4",
+    done: false,
+  };
+
+  addTodo(item1);
+
+  addTodo({
+    id: 5,
+    title: "아이템5",
+    done: false,
+  });
+}
+
+todoItems = fetchTodoItems();
+addTwoTodoItems();
+log();
+
+completeTodo(1, todoItems[0]);
+log();
+let completeTodoList = showCompleted();
+console.log(completeTodoList);
+
+deleteTodo(3);
+log();
+
+// type Toodo = { id: number; title:string; done:boolean };
+// let todoItems: Todo[]
+
+// //api
+// function fetchTodoItems(): any {
+//   const todos = [
+//     { id: 1, title: "안녕", done: false }
+//     { id: 2, title: "타입", done: false }
+//     { id: 3, title: "스크립트", done: false }
+//      { id: 4, title: "아이템4", done: false }
+//       { id: 5, title: "아이템5", done: false }
+//   ]
+//   return todos;
+// }
+// // CRUD methods
+// function fetchTodos(){
+//   const todos = fetchTodoItems();
+//   return todos;
+// }
+// function addTodo(todo) {
+//   todoItems Push(todo);
+// }
+
+// function deleteTodo(index){
+//   todoItems splice(index, 1);
+// }
+
+// function completeTodo(index: number, todo: ){
+//   todo.done = true;
+//   todoItems splice (index, 1, todo);
+// }
+
+// // business logic
+// function logFirstTodo(): Todo { // 할 일 목록에서 첫 번째 출력
+//   return todoItems[0];
+// }
+
+// function showCompleted(): Todo[] {
+//   return todoItems.filter((item)=> {return item.done });
+// }
+
+// function.log(): void {
+//   console.log(todoItems);
+// }
+// //Todo: 아래 함수의 내용을 채워보세요, 아래 함수는 'addTodo()' 함수를 이용하여 2개의 새 할일을 추가하는 함수입니다.
+// function addTwoTodoItems(): void {
+//   const item1 = {
+//     id:4
+//     title:  '아이템4'
+//     done: false
+//   }
+//   addTodo(item1);
+
+//   addTodo({
+//     id:5,
+//     title: "아이템 5",
+//     done: true,
+//   });
+// }
+// todoItems = fetchTodoItems();
+// addTwoTodoItems();
+// log();
+// completeTodo(1, TodoItems[1]);
+// log();
+// showCompleted();
+// log();

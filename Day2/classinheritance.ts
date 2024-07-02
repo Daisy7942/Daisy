@@ -12,6 +12,7 @@ class Motocycle extends Vehicle {
 
   updatedWheelCount(newWheelcount: number) {
     this.wheelCount = newWheelcount;
+    
   }
 }
 

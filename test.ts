@@ -18,3 +18,5 @@ class student {
 const hyung = new student("체육학", 2005, "C");
 // hyung.print();
 console.log(hyung);
+
+
