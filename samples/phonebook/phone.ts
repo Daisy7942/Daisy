@@ -10,14 +10,14 @@ interface Contact {
   phones: PhoneNumberDictionary;
 }
 
-enum PhoneType {
+enum PhoneType { //목록화
   Home = "home",
   Office = "office",
   Studio = "studio",
 }
 
 // api
-function fetchContacts(): Promise<Contact[]> {
+function fetchContacts(): Promise<Contact[]> { // 비동기 함수-순서와 상관없이 실행완료될때까지 기다리지 않고 다음 작업 실행
   const contacts: Contact[] = [
     {
       name: "Tony",
@@ -108,3 +108,6 @@ async function test2() {
 }
 
 test2();
+
+
+
