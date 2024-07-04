@@ -35,3 +35,12 @@ const pam: Employee = {
 console.log(pam.getUniqueId());
 
 //출퇴근?
+export {};
+
+function add(x: number, y: number): number {
+  return x + y;
+}
+
+const arrowFunctionAdd = (x: number, y: number) => {
+  return x + y;
+};

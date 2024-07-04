@@ -30,4 +30,7 @@ namespace GenericNamespace {
   const chevy = new Chevy();
   console.log("car name ", chevy.getName());
   console.log("wheels ", chevy.getWheelCount());
+
+  console.log(chevy);
+  const chevy1 = new Chevy();
 }
