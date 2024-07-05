@@ -4,7 +4,7 @@ class Vehicle {
     console.log(`moved ${this.wheelCount}`);
   }
 }
-
+//inheritance  상속
 class Motocycle extends Vehicle {
   constructor() {
     super(2);

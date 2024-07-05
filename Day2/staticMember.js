@@ -9,19 +9,17 @@
 // // console.log(a.typeName); // error
 // console.log(ClassA.typeName); // Output: undefined
 // console.log(ClassA.getFullName()); // Output: ClassAundefined
-classs;
-Runner;
-{
-    lastRunTypeName: string;
-    constructor(private, typename, string);
-    { }
-    runMore();
-    {
-        runner.lastRunTypeName = this.typename;
+var Runner = /** @class */ (function () {
+    function Runner(typeName) {
+        this.typeName = typeName;
     }
-}
-var a = new runner("a");
-var b = new runner("b");
-a.run();
+    Runner.prototype.run = function () {
+        Runner.lastRunTypeName = this.typeName;
+    };
+    return Runner;
+}());
+var runner_a = new Runner("a");
+var b = new Runner("b");
+runner_a.run();
 b.run();
-console.log(Runner.);
+console.log(Runner.lastRunTypeName);

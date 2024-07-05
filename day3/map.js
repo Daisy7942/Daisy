@@ -5,7 +5,7 @@ var employees = [
 ];
 var elements = employees.map(function (item, index) {
     console.log(index);
-    // return `<div>${item.id} - ${item.name}</div>`;
-    return "".concat(item.id * 2);
+    return "<div>".concat(item.id, " - ").concat(item.name, "</div>");
+    // return `${item.id * 2}`;
 });
 console.log(elements);

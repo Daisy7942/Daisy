@@ -12,21 +12,20 @@
 // console.log(ClassA.typeName); // Output: undefined
 // console.log(ClassA.getFullName()); // Output: ClassAundefined
 
-
-
-classs Runner {
+class Runner {
   static lastRunTypeName: string;
 
-  constructor(private typename: string){}
+  constructor(private typeName: string) {}
 
-  runMore(){
-    runner.lastRunTypeName = this.typename;
-  
+  run() {
+    Runner.lastRunTypeName = this.typeName;
   }
 }
 
-const a = new Runner("a");
+const runner_a = new Runner("a");
 const b = new Runner("b");
-a.run();
+
+runner_a.run();
 b.run();
-console.log(Runner.lastRunTypeName)
+
+console.log(Runner.lastRunTypeName);

@@ -6,8 +6,8 @@ const employees = [
 
 const elements = employees.map((item, index) => {
   console.log(index);
-  // return `<div>${item.id} - ${item.name}</div>`;
-  return `${item.id * 2}`;
+  return `<div>${item.id} - ${item.name}</div>`;
+  // return `${item.id * 2}`;
 });
 
 console.log(elements);

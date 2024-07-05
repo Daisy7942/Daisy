@@ -1,15 +1,17 @@
-// class Person{
-//   name: string;
+// class Person {
+//     name: string;
 // }
-// 일때
-// const jill: { name: string} = {     과
-// const jill:Person = {     는 같다.
-var Person = /** @class */ (function () {
-  function Person() {}
-  return Person;
-})();
-var jill = {
-  name: "jill",
+// const jill: { name: string } = {
+//     name: "jill"
+// };
+// const person: Person = jill;
+// console.log(person);
+class Person {
+    name;
+}
+const jill = {
+    name: "jill",
 };
-var person = jill;
+const person = jill;
 console.log(person);
+export {};

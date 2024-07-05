@@ -1,4 +1,5 @@
 interface User {
+  //interface는 객체의 타입을 정의
   name: string;
   age: number;
 }

@@ -1,13 +1,13 @@
 function oldEnoough(age: number): never | boolean {
-  if(age > 59) {
-    throw Error("Tood old!");    
-  }
-  if (age <= 18) {
+  if (age > 59) {
+    throw Error("Too old!");
+  } else if (age <= 18) {
     return false;
   }
+  // else {
+  //   return true;
+  // }
 
-  if(age > 59) {
+  //위에꺼 또는  밑에꺼가 같은 결과나옴//
   return true;
-} else if (age <= 18) {
-  return false;
 }

@@ -32,5 +32,50 @@ namespace GenericNamespace {
   console.log("wheels ", chevy.getWheelCount());
 
   console.log(chevy);
-  const chevy1 = new Chevy();
 }
+
+class Animal {
+  name: string;
+  color: string;
+  constructor(name, color) {
+    this.name = name;
+    this.color = color;
+  }
+  bark() {
+    console.log("walwal");
+  }
+}
+
+const animal = new Animal("animal", "red");
+console.log(animal.name);
+console.log(animal.color);
+
+class Dog extends Animal {
+  constructor() {
+    super("dog", "yellow");
+  }
+}
+
+const doggy = new Dog();
+doggy.bark();
+console.log(doggy.name);
+console.log(doggy.color);
+
+class cats extends Animal {
+  constructor(name: string, color: string) {
+    super(name, color);
+  }
+  bark() {
+    console.log("woof");
+  }
+  jump() {
+    console.log("jump");
+  }
+}
+// const Doggy = new Dog("Doggy", "red");
+const Cat = new cats("hey", "red");
+console.log(Cat.name);
+console.log(Cat.color);
+Cat.bark();
+Cat.jump();
+// Doggy.bark();

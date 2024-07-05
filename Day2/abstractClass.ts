@@ -2,33 +2,38 @@
 namespace AbstractNamespace {
   abstract class Vehicle {
     constructor(protected wheelCount: number) {}
-    abstract updatedWheelCount(newWheelcount: number): void;
+    abstract updateWheelCount(newWheelCount: number): void;
     showNumberOfWheels() {
       console.log(`moved ${this.wheelCount}`);
     }
   }
 
-  class Motocycle extends Vehicle {
+  class Motorcycle extends Vehicle {
     constructor() {
       super(2);
     }
-
-    updatedWheelCount(newWheelcount: number) {
-      this.wheelCount = newWheelcount;
+    updateWheelCount(newWheelCount: number) {
+      this.wheelCount = newWheelCount;
     }
   }
 
-  class Automobile extends Vehicle {
+  class Autocycle extends Vehicle {
     constructor() {
       super(4);
     }
-    updatedWheelCount(newWheelcount: number): void {}
+    updateWheelCount(newWheelCount: number): void {
+      this.wheelCount = newWheelCount;
+      console.log(`Automobile has ${this.wheelCount}`);
+    }
+    showNumberOfWheels() {
+      console.log(`moved Automobile ${this.wheelCount}`);
+    }
   }
 
-  const motorCycle = new Motocycle();
-  motorCycle.updatedWheelCount(1);
-  motorCycle.showNumberOfWheels();
-  const automobile = new Automobile();
-  automobile.updatedWheelCount(5);
-  automobile.showNumberOfWheels();
+  const motocycle = new Motorcycle();
+  motocycle.showNumberOfWheels();
+  motocycle.updateWheelCount(100);
+  console.log("updated data", motocycle.showNumberOfWheels());
+  const autocycle = new Autocycle();
+  autocycle.showNumberOfWheels();
 }
