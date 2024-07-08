@@ -1,10 +1,11 @@
+//inheritance  상속
 class Vehicle {
   constructor(protected wheelCount: number) {}
   showNumberOfWheels() {
     console.log(`moved ${this.wheelCount}`);
   }
 }
-//inheritance  상속
+
 class Motocycle extends Vehicle {
   constructor() {
     super(2);
@@ -30,4 +31,4 @@ motorCycle.showNumberOfWheels();
 const automobile = new Automobile();
 automobile.showNumberOfWheels();
 
-export {};
+export {}; //같은 변수 일때 괜찮게

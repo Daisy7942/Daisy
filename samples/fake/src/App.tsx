@@ -90,21 +90,69 @@
 //     </div>
 //   );
 // }
-import "./index.css";
-import Bootstrap from "./pages/Bootstrap";
-import Icon from "./pages/Icon";
-import Style from "./pages/Styles";
-// import UsingIcon from "./pages/UsingIcon";
-// import UsingIconWithCSSClass from "./pages/UsingIconWithCSSClass";
+// import "./index.css";
+// import Bootstrap from "./pages/Bootstrap";
+// import Icon from "./pages/Icon";
+// import Style from "./pages/Styles";
+// // import UsingIcon from "./pages/UsingIcon";
+// // import UsingIconWithCSSClass from "./pages/UsingIconWithCSSClass";
+
+// export default function App() {
+//   return (
+//     <div>
+//       {/* <UsingIconWithCSSClass />
+//       <UsingIcon /> */}
+//       <Style />
+//       <Icon />
+//       <Bootstrap />
+//     </div>
+//   );
+// }
+
+// import Tailwindcss from "./pages/Tailwindcss";
+// import Color from "./pages/Color";
+// import TextsTest from "./pages/TextsTest";
+
+// export default function App() {
+//   return (
+//     <div>
+//       <TextsTest />
+//       <Color />
+//       <Tailwindcss />
+//     </div>
+//   );
+// }
+
+import DivTest from "./pages/DivTest";
+import ViewportTest from "./pages/ViewportTest";
+import HeightTest from "./pages/HeightTest";
+import PaddingTest from "./pages/PaddingTest";
+import MarginTest from "./pages/MarginTest";
+import ImageTest from "./pages/ImageTest";
+import BorderTest from "./pages/BorderTest";
+import BackgroundImageTest from "./pages/BackgroundImageTest";
+import DisplayTest from "./pages/DisplayTest";
+import DisplayNoneTest from "./pages/DisplayNoneTest";
+import AvatarTest from "./pages/AvatarTest";
+import PositionTest from "./pages/PositionTest";
+import OverlayTest from "./pages/OverlayTest";
 
 export default function App() {
   return (
-    <div>
-      {/* <UsingIconWithCSSClass />
-      <UsingIcon /> */}
-      <Style />
-      <Icon />
-      <Bootstrap />
-    </div>
+    <main>
+      <OverlayTest />
+      <PositionTest />
+      <BorderTest />
+      <AvatarTest />
+      <DisplayNoneTest />
+      <DisplayTest />
+      <BackgroundImageTest />
+      <MarginTest />
+      <PaddingTest />
+      <HeightTest />
+      <ViewportTest />
+      <ImageTest />
+      <DivTest />
+    </main>
   );
 }
