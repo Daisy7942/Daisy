@@ -16,14 +16,15 @@ import reportWebVitals from "./reportWebVitals";
 // import UseMemoApp2 from "./UseMemoApp2";
 // import UseCallbackApp1 from "./UseCallbackApp1";
 import UseLayoutEffectApp1 from "./UseLayoutEffectApp1";
+import UseStateApp1 from "./UseStateApp1";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  // <React.Fragment>
-  <UseLayoutEffectApp1 />
-  // </React.Fragment>
+  <React.Fragment>
+    <UseStateApp1 />
+  </React.Fragment>
 );
 
 // If you want to start measuring performance in your app, pass a function

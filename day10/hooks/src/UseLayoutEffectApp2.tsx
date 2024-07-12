@@ -17,7 +17,9 @@ function UseLayoutEffectApp2() {
     if (numbers.length === 0) {
       return;
     }
-    ref.current?.scrollTop = ref.current?.scrollHeight;
+    if (ref.current?.scrollTop) {
+      ref.current.scrollTop = ref.current?.scrollHeight;
+    }
   }, []);
 
   return (
