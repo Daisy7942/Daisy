@@ -1,8 +1,9 @@
-import React, { useCallback, useReducer, useState } from "react";
+import React, { useCallback, useEffect, useReducer, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Greeting from "./GreetingFunctional";
 import { start } from "repl";
+import { ListItem, ListItems } from "./ListCreator";
 
 const reducer = (state: any, action: any) => {
   console.log("enterednameReducer");
@@ -41,6 +42,15 @@ function App() {
       count + 1 > startCount ? count + 1 : Number(count + 1) + startCount;
     setCount(inc);
   }, [count, startCount]);
+  const [listItems, setListItems] = useState<Array<ListItem>>();
+
+  useEffect(() => {
+    const li = [];
+    for (let i = 0; i < count; i++) {
+      li.push({ id: i });
+    }
+    setListItems(li);
+  }, [count]);
 
   const onWelcomeBtnClick = () => {
     setCountCallback();
@@ -74,6 +84,9 @@ function App() {
           <label>{count}</label>
           <br />
           <button onClick={onWelcomeBtnClick}>Increment count</button>
+        </div>
+        <div>
+          <ListCreator listItems={listitems} />
         </div>
       </header>
     </div>
