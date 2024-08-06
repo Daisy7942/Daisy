@@ -1,0 +1,132 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="timeline">
+  {% if user %}
+  <!-- 로그인한 사용자만 볼 수 있는 게시물 작성 폼 -->
+  <div>
+    <form
+      id="twit-form"
+      action="/post"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <!-- 게시물 내용 입력 영역 -->
+      <div class="input-group">
+        <textarea id="twit" name="content" maxlength="140"></textarea>
+      </div>
+      <!-- 이미지 미리보기 영역 -->
+      <div class="img-preview">
+        <img
+          id="img-preview"
+          src=""
+          style="display: none"
+          width="250"
+          alt="미리보기"
+        />
+        <input id="img-url" type="hidden" name="url" />
+      </div>
+      <!-- 파일 업로드 및 제출 버튼 -->
+      <div>
+        <label id="img-label" for="img">사진 업로드</label>
+        <input id="img" type="file" accept="image/*" />
+        <button id="twit-btn" type="submit" class="btn">꽥꽥</button>
+      </div>
+    </form>
+  </div>
+  {% endif %}
+
+  <div class="twits">
+    <!-- 해시태그 검색 폼 -->
+    <form id="hashtag-form" action="/hashtag">
+      <input type="text" name="hashtag" placeholder="태그 검색" />
+      <button class="btn">검색</button>
+    </form>
+
+    <!-- 게시물 목록 -->
+    {% for twit in twits %}
+    <div class="twit">
+      <input type="hidden" value="{{twit.User.id}}" class="twit-user-id" />
+      <input type="hidden" value="{{twit.id}}" class="twit-id" />
+      <div class="twit-author">{{twit.User.nick}}</div>
+      <!-- 팔로우 버튼 (자신의 게시물이 아니고 팔로우하지 않은 경우에만 표시) -->
+      {% if not followingIdList.includes(twit.User.id) and twit.User.id !==
+      user.id %}
+      <button class="twit-follow">팔로우하기</button>
+      {% endif %}
+      <div class="twit-content">{{twit.content}}</div>
+      <!-- 게시물 이미지가 있는 경우 표시 -->
+      {% if twit.img %}
+      <div class="twit-img"><img src="{{twit.img}}" alt="섬네일" /></div>
+      {% endif %}
+    </div>
+    {% endfor %}
+
+    <!-- 페이징 정보 표시 (디버깅 용도로 보임) -->
+    <span>currentPage:{{currentPage}}</span><br />
+    <span>pagePaddingSize:{{pagePaddingSize}}</span><br />
+    <span>totalSize:{{totalSize}}</span><br />
+    <span>>>:{{totalSize // pageSize + pagePaddingSize}}</span><br />
+    <span>>>:{{(currentPage + pagePaddingSize)}}</span><br />
+
+    <!-- 페이지 네비게이션 -->
+    <a href="/?currentPage=1"><span><<</span></a
+    >&nbsp;&nbsp; {% if currentPage != 1 %}
+    <a href="/?currentPage={{currentPage - 1}}"><span><</span></a
+    >&nbsp;&nbsp; {% endif %} {% if currentPage == 1 %}
+    <span><</span>&nbsp;&nbsp; {% endif %}
+
+    <!-- 페이지 번호 표시 -->
+    {% for i in range(totalSize // pageSize) %} {% if i > 0 and i < (totalSize
+    // pageSize) and i > (currentPage - pagePaddingSize - 1) and i <
+    (currentPage + pagePaddingSize + 1) %}
+    <a href="/?currentPage={{i}}"><span>{{i}}</span></a
+    >&nbsp;&nbsp; {% endif %} {% endfor %} {% if currentPage != totalSize //
+    pageSize %} <a href="/?currentPage={{currentPage + 1}}"><span>></span></a
+    >&nbsp;&nbsp; {% endif %} {% if currentPage == totalSize // pageSize %}
+    <a href="/?currentPage={{currentPage + 1}}"><span>></span></a
+    >&nbsp;&nbsp; {% endif %}
+    <a href="/?currentPage={{totalSize // pageSize + 1}}"><span>>></span></a>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script>
+  // 이미지 업로드 처리
+  if (document.getElementById("img")) {
+    document.getElementById("img").addEventListener("change", function (e) {
+      const formData = new FormData();
+      formData.append("img", this.files[0]);
+      axios
+        .post("/post/img", formData)
+        .then((res) => {
+          document.getElementById("img-url").value = res.data.url;
+          document.getElementById("img-preview").src = res.data.url;
+          document.getElementById("img-preview").style.display = "inline";
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    });
+  }
+
+  // 팔로우 버튼 클릭 처리
+  document.querySelectorAll(".twit-follow").forEach(function (tag) {
+    tag.addEventListener("click", function () {
+      const myId = document.querySelector("#my-id");
+      if (myId) {
+        const userId = tag.parentNode.querySelector(".twit-user-id").value;
+        if (userId !== myId.value) {
+          if (confirm("팔로잉하시겠습니까?")) {
+            axios
+              .post(`/user/${userId}/follow`)
+              .then(() => {
+                location.reload();
+              })
+              .catch((err) => {
+                console.error(err);
+              });
+          }
+        }
+      }
+    });
+  });
+</script>
+{% endblock %}
